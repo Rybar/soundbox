@@ -55,7 +55,7 @@ var CPlayer = function() {
         return 0.003959503758 * Math.pow(2, (n - 128) / 12);
     };
 
-    var createNote = function (instr, n, rowLen) {
+    this.createNote = function (instr, n, rowLen) {
         var osc1 = mOscillators[instr.i[0]],
             o1vol = instr.i[1],
             o1xenv = instr.i[3],
@@ -341,4 +341,3 @@ var CPlayer = function() {
         return d;
     };
 };
-

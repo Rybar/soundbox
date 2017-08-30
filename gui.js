@@ -386,7 +386,7 @@ var CGUI = function()
 
     // Row length
     song.rowLen = calcSamplesPerRow(120);
-  
+
     // Last pattern to play
     song.endPattern = 2;
 
@@ -916,7 +916,7 @@ var CGUI = function()
 
       song.songData[i] = instr;
     }
-  
+
     // Last pattern to play
     song.endPattern = bin.getUBYTE() + 2;
 
@@ -943,7 +943,7 @@ var CGUI = function()
   var songToJS = function (song) {
     var i, j, k;
     var jsData = "";
-  
+
     jsData += "    // This music has been exported by SoundBox. You can use it with\n";
     jsData += "    // http://sb.bitsnbites.eu/player-small.js in your own product.\n\n";
 
@@ -1051,7 +1051,7 @@ var CGUI = function()
         jsData += ",";
       jsData += "\n";
     }
-    
+
     jsData += "      ],\n";
     jsData += "      rowLen: " + song.rowLen + ",   // In sample lengths\n";
     jsData += "      patternLen: " + song.patternLen + ",  // Rows per pattern\n";
@@ -1953,8 +1953,11 @@ var CGUI = function()
     updateSongRanges();
 
     // Generate JS song data
-    var dataURI = "data:text/javascript;base64," + btoa(songToJS(mSong));
-    window.open(dataURI);
+    //var songJS = btoa(songToJS(mSong))
+    //var dataURI = "data:text/javascript;base64," + btoa(songToJS(mSong));
+    var newWindow = window.open();
+    //newWindow.document.write('this is a test?');
+    newWindow.document.write('<code style="white-space: pre-wrap;">' + songToJS(mSong));
     return false;
   };
 
@@ -3790,4 +3793,3 @@ function gui_init()
     alert("Unexpected error: " + err.message);
   }
 }
-
